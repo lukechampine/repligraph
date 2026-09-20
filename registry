@@ -1,0 +1,15 @@
+i-vllm-0.29.0-h100: Serve vllm/vllm-openai:v0.29.0@sha256:c2914767605584b6d8f45686b82de173ecc99e781897aa3d0a66dacd72c51ae1 on Linux x86-64 with one NVIDIA H100 80GB HBM3, driver 580.105.08. Set VLLM_BATCH_INVARIANT=1 and VLLM_USE_V2_MODEL_RUNNER=0. Pass --dtype bfloat16 --kv-cache-dtype auto --attention-config '{"backend":"FLASH_ATTN","flash_attn_version":3}' --tensor-parallel-size 1 --pipeline-parallel-size 1 --data-parallel-size 1 --seed 0 --enforce-eager --no-enable-prefix-caching --no-async-scheduling --generation-config vllm --gpu-memory-utilization 0.70 --max-num-batched-tokens 1024 --max-num-seqs 16 --max-model-len 8192 --enable-chunked-prefill. Use inference/vllm @ <initial commit>.
+
+i-vllm-0.29.0-a100: Same as i-vllm-0.29.0-h100, but with one NVIDIA A100-SXM4-40GB and --attention-config '{"backend":"FLASH_ATTN","flash_attn_version":2}'.
+
+i-vllm-metal-0.29.0-m5: Serve vLLM 0.29.0+cpu with vLLM Metal 0.29.0 @ 7390805822b2d7a208b09d55bd07b7572f727e20 on an Apple M5 GPU. Use inference/vllm/metal-requirements.txt @ <initial commit>. Set VLLM_USE_V2_MODEL_RUNNER=0, VLLM_BATCH_INVARIANT=0, VLLM_MLX_DEVICE=gpu, VLLM_METAL_USE_PAGED_ATTENTION=1, VLLM_METAL_MEMORY_FRACTION=auto, VLLM_METAL_DISABLE_NAX=1, VLLM_METAL_COMPILED_MLP=0, VLLM_METAL_NATIVE_SAMPLING=0, and VLLM_METAL_DECODE_PIPELINE=0. Pass --dtype bfloat16 --kv-cache-dtype auto --max-model-len 8192 --max-num-seqs 1 --max-num-batched-tokens 1024 --enable-chunked-prefill --gpu-memory-utilization 0.7 --seed 0 --enforce-eager --no-enable-prefix-caching --no-async-scheduling --generation-config vllm. Use inference/vllm @ <initial commit>.
+
+m-qwen2.5-coder-7b: Qwen/Qwen2.5-Coder-7B-Instruct @ c03e6d358207e414f1eca0bb1891e29f1db0e242. Use inference/model/qwen.New @ <initial commit>.
+
+m-qwen2.5-coder-1.5b: Qwen/Qwen2.5-Coder-1.5B-Instruct @ 2e1fd397ee46e1388853d2af2c993145b0f1098a. Use inference/model/qwen.NewSmall @ <initial commit>.
+
+m-mistral-small-3.1: mistralai/Mistral-Small-3.1-24B-Instruct-2503 @ 68faf511d618ef198fef186659617cfd2eb8e33a. Use inference/model/mistral.New @ <initial commit>.
+
+e-repligraph-v1: Use harness @ <initial commit> with an empty environment tree.
+
+e-repligraph-go-v1: Same as e-repligraph-v1, plus the .wasm files built by ./environments/go/build.sh @ <initial commit>.
